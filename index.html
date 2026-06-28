@@ -211,7 +211,6 @@
             message and identity in the most creative way. I created web design for many famous brand companies.
           </p>
         </section>
-
 <!--         <div class="about-wrapper"> -->
           <button class="about-btn" onclick="window.open('./assets/pdf/2026_CV-Remy_DataScientist.pdf')">
             <!--<ion-icon name="document"></ion-icon>-->
@@ -251,29 +250,16 @@
           <h2 class="h2 article-title">Projects</h2>
         </header>
 
-        <section class="projects">
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-          </div>
+        <div class="viewport">
+        <section class="panel grid-panel">
 
           <ul class="project-list">
 
-            <li class="project-item  active" data-filter-item data-category="web development">
+            <li class="project-card  active" data-md="./assets/pages/mountain-wilderness.md">
               <a href="#">
 
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-card-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
@@ -287,11 +273,11 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
+            <li class="project-card  active" data-md="./assets/pages/semantic-similarity.md">
               <a href="#">
 
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-card-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
@@ -305,11 +291,11 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web design">
+            <li class="project-card  active" data-md="./assets/pages/mycine.md">
               <a href="#">
 
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-card-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
@@ -323,15 +309,15 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="applications">
+            <li class="project-card  active" data-md="./assets/pages/hypotonia.md">
               <a href="#">
 
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-card-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-4.png" alt="hypotonia" loading="lazy">
+                  <img src="./assets/images/hypotonia.jpeg" alt="hypotonia" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Hypotonia</h3>
@@ -341,29 +327,29 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web design">
+            <li class="project-card  active" data-md="./assets/pages/choroid-segmentation.md">
               <a href="#">
 
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-card-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-5.png" alt="ocular-rigidity" loading="lazy">
+                  <img src="./assets/images/choroidal_segmentation.png" alt="choroid-segmentation" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Ocular Rigidity</h3>
+                <h3 class="project-title">Choroid Segmentation</h3>
 
                 <p class="project-category">Web design</p>
 
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web design">
+            <li class="project-card  active" data-md="./assets/pages/rdaggregator.md">
               <a href="#">
 
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-card-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
@@ -377,11 +363,11 @@
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
+            <li class="project-card  active" data-md="./assets/pages/stats-workflow.md">
               <a href="#">
 
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-card-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
@@ -397,7 +383,14 @@
 
           </ul>
 
+
         </section>
+        <section id="panel detail-panel">
+          <button id="backBtn">← Back</button>
+          <zero-md id="project-viewer"></zero-md>
+        </section>
+
+        </div>
 
       </article>
 
@@ -438,6 +431,12 @@
     - fontawesome link
   -->
   <script src="https://kit.fontawesome.com/37d563aab6.js" crossorigin="anonymous"></script>
+
+  <!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
+  <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+
+  <!-- Load the element definition -->
+  <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
 
 </body>
 

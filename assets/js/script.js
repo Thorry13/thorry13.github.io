@@ -55,66 +55,6 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
-}
-
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-const filterFunc = function (selectedValue) {
-
-  for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
-
-  }
-
-}
-
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
-for (let i = 0; i < filterBtn.length; i++) {
-
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
-
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
-
-  });
-
-}
-
-
-
 // contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
@@ -157,3 +97,36 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// add click event for project cards
+const viewport = document.querySelector(".viewport");
+const cards = document.querySelectorAll(".project-card");
+
+function changeMdSrc(md){
+  const oldViewer = document.getElementById("project-viewer");
+  const newViewer = document.createElement("zero-md");
+  newViewer.setAttribute("src", md);
+  newViewer.id = "project-viewer";
+
+  oldViewer.replaceWith(newViewer);
+
+}
+
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+
+    const md = card.dataset.md; // Get markdown file
+    changeMdSrc(md);
+    viewport.classList.add("detail-active");
+
+  });
+});
+
+// Back button
+document.getElementById("backBtn").addEventListener("click", () => {
+  viewport.classList.remove("detail-active");
+});
+/*
+document.getElementById("backBtn").addEventListener("click", () => {
+  viewport.classList.remove("detail-active");
+});*/
