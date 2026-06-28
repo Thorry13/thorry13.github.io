@@ -170,15 +170,15 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link  active" data-nav-link data-page="about">About</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Projects</button>
+            <button class="navbar-link" data-nav-link data-page="projects">Projects</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Publications</button>
+            <button class="navbar-link" data-nav-link data-page="publications">Publications</button>
           </li>
 
         </ul>
@@ -255,8 +255,9 @@
 
           <ul class="project-list">
 
-            <li class="project-card  active" data-md="./assets/pages/mountain-wilderness.md">
-              <a href="#">
+            <li class="project-card  active"
+                data-project="mountain-wilderness"
+                data-md="./assets/pages/mountain-wilderness.md">
 
                 <figure class="project-img">
                   <div class="project-card-icon-box">
@@ -270,11 +271,11 @@
 
                 <p class="project-category">Web development</p>
 
-              </a>
             </li>
 
-            <li class="project-card  active" data-md="./assets/pages/semantic-similarity.md">
-              <a href="#">
+            <li class="project-card  active"
+                data-project="semantic-similarity"
+                data-md="./assets/pages/semantic-similarity.md">
 
                 <figure class="project-img">
                   <div class="project-card-icon-box">
@@ -288,11 +289,11 @@
 
                 <p class="project-category">Web development</p>
 
-              </a>
             </li>
 
-            <li class="project-card  active" data-md="./assets/pages/mycine.md">
-              <a href="#">
+            <li class="project-card  active"
+                data-project="mycine"
+                data-md="./assets/pages/mycine.md">
 
                 <figure class="project-img">
                   <div class="project-card-icon-box">
@@ -306,29 +307,29 @@
 
                 <p class="project-category">Web design</p>
 
-              </a>
             </li>
 
-            <li class="project-card  active" data-md="./assets/pages/hypotonia.md">
-              <a href="#">
+            <li class="project-card  active"
+                data-project="bm-folds"
+                data-md="./assets/pages/bm-folds.md">
 
                 <figure class="project-img">
                   <div class="project-card-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/hypotonia.jpeg" alt="hypotonia" loading="lazy">
+                  <img src="./assets/images/hypotonia.jpeg" alt="bm-folds" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Hypotonia</h3>
+                <h3 class="project-title">BM Folds</h3>
 
                 <p class="project-category">Applications</p>
 
-              </a>
             </li>
 
-            <li class="project-card  active" data-md="./assets/pages/choroid-segmentation.md">
-              <a href="#">
+            <li class="project-card  active"
+                data-project="choroid-segmentation"
+                data-md="./assets/pages/choroid-segmentation.md">
 
                 <figure class="project-img">
                   <div class="project-card-icon-box">
@@ -341,12 +342,11 @@
                 <h3 class="project-title">Choroid Segmentation</h3>
 
                 <p class="project-category">Web design</p>
-
-              </a>
             </li>
 
-            <li class="project-card  active" data-md="./assets/pages/rdaggregator.md">
-              <a href="#">
+            <li class="project-card  active"
+                data-project="rdaggregator"
+                data-md="./assets/pages/rdaggregator.md">
 
                 <figure class="project-img">
                   <div class="project-card-icon-box">
@@ -360,11 +360,11 @@
 
                 <p class="project-category">Web design</p>
 
-              </a>
             </li>
 
-            <li class="project-card  active" data-md="./assets/pages/stats-workflow.md">
-              <a href="#">
+            <li class="project-card  active"
+                data-project="stats-workflow"
+                data-md="./assets/pages/stats-workflow.md">
 
                 <figure class="project-img">
                   <div class="project-card-icon-box">
@@ -378,16 +378,18 @@
 
                 <p class="project-category">Web development</p>
 
-              </a>
             </li>
 
           </ul>
 
 
         </section>
-        <section id="panel detail-panel">
-          <button id="backBtn">← Back</button>
-          <zero-md id="project-viewer"></zero-md>
+        <section class="panel detail-panel">
+          <header class="detail-header">
+            <button id="backBtn">← Projects</button>
+            <h2 id="detail-title"></h2>
+          </header>
+            <zero-md id="project-viewer"></zero-md>
         </section>
 
         </div>

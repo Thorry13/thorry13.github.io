@@ -1,6 +1,62 @@
 'use strict';
 
+// Read URL
+function parseHash() {
+  const hash = window.location.hash.slice(1); // remove "#"
+  const [page, project] = hash.split(":");
 
+  return {
+    page: page || "about",
+    project: project || null
+  };
+}
+
+// Use URL to directly access pages
+function applyState(state) {
+
+  // navbar
+  pages.forEach(page => {
+    page.classList.toggle(
+      "active",
+      page.dataset.page === state.page
+    );
+  });
+
+  navigationLinks.forEach(l => {
+    l.classList.toggle("active", l.dataset.page === state.page);
+  });
+
+  // projects
+  if (state.page === "projects" && state.project) {
+    // open project
+    const card = document.querySelector(
+      `[data-project="${state.project}"]`
+    );
+
+    if (!card) return;
+
+    const md = card.dataset.md; // Get markdown file
+    changeMdSrc(md);
+    viewport.classList.add("detail-active");
+
+    cards.forEach(c => c.classList.remove("selected"));
+    card.classList.add("selected");
+
+    document.getElementById("detail-title").textContent =
+    card.querySelector(".project-title").textContent;
+  } else {
+    // close project
+    viewport.classList.remove("detail-active");
+  }
+}
+
+window.addEventListener("load", () => {
+  applyState(parseHash());
+});
+
+window.addEventListener("hashchange", () => {
+  applyState(parseHash());
+});
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
@@ -30,7 +86,8 @@ const modalText = document.querySelector("[data-modal-text]");
 // modal toggle function
 const testimonialsModalFunc = function () {
   modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
+  overlay.classList.toggle("active");viewport.classList.remove("detail-active");
+  history.pushState({},"","#projects");
 }
 
 // add click event to all modal items
@@ -57,23 +114,32 @@ overlay.addEventListener("click", testimonialsModalFunc);
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
+// navigationLinks.forEach(link => {
+//   link.addEventListener("click", () => {
+//     const target = link.dataset.page;
+//
+//     pages.forEach(page => {
+//       page.classList.toggle(
+//         "active",
+//         page.dataset.page === target
+//       );
+//       history.pushState({},"","#"+target);
+//     });
+//
+//     navigationLinks.forEach(l => {
+//       l.classList.toggle("active", l === link);
+//     });
+//
+//     window.scrollTo(0, 0);
+//   });
+// });
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
+navigationLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    window.location.hash = link.dataset.page;
+    window.scrollTo(0, 0);
   });
-}
+});
 
 // add click event for project cards
 const viewport = document.querySelector(".viewport");
@@ -89,19 +155,41 @@ function changeMdSrc(md){
 
 }
 
+// cards.forEach(card => {
+//   card.addEventListener("click", () => {
+//
+//     const md = card.dataset.md; // Get markdown file
+//     changeMdSrc(md);
+//     viewport.classList.add("detail-active");
+//
+//     cards.forEach(c => c.classList.remove("selected"));
+//     card.classList.add("selected");
+//
+//     document.getElementById("detail-title").textContent =
+//       card.querySelector(".project-title").textContent;
+//
+//     history.pushState({},"","#projects:" + card.dataset.project);
+//     // history.pushState({},"","#test");
+//
+//   });
+// });
+
 cards.forEach(card => {
   card.addEventListener("click", () => {
-
-    const md = card.dataset.md; // Get markdown file
-    changeMdSrc(md);
-    viewport.classList.add("detail-active");
+    // history.pushState({},"","#projects:" + card.dataset.project);
+    // history.pushState({},"","#test");
+  window.location.hash = `projects:${card.dataset.project}`;
 
   });
 });
 
+
 // Back button
 document.getElementById("backBtn").addEventListener("click", () => {
-  viewport.classList.remove("detail-active");
+  // viewport.classList.remove("detail-active");
+  // history.pushState({},"","#projects");
+  window.location.hash = "projects";
+  // showGrid();
 });
 /*
 document.getElementById("backBtn").addEventListener("click", () => {
