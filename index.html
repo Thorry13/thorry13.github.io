@@ -264,7 +264,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/MW_map.png" alt="mountain-wilderness" loading="lazy">
+                  <img src="./assets/images/MW_map_1-90.png" alt="mountain-wilderness" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Mountain Wilderness</h3>
@@ -282,7 +282,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/SS_pipeline_whiteBG.png" alt="semantic-similarity" loading="lazy">
+                  <img src="./assets/images/SS_pipeline_whiteBG_1-90.png" alt="semantic-similarity" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Semantic Similarity</h3>
@@ -318,7 +318,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/hypotonia.jpeg" alt="bm-folds" loading="lazy">
+                  <img src="./assets/images/hypotonia_1-90.jpeg" alt="bm-folds" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">BM Folds</h3>
@@ -336,7 +336,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/choroidal_segmentation.png" alt="choroid-segmentation" loading="lazy">
+                  <img src="./assets/images/choroidal_segmentation_1-90.png" alt="choroid-segmentation" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Choroid Segmentation</h3>
@@ -353,7 +353,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/rdaggregator_whiteBG.png" alt="rdaggregator" loading="lazy">
+                  <img src="./assets/images/rdaggregator_whiteBG_1-90.png" alt="rdaggregator" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">RDaggregator</h3>
@@ -386,10 +386,22 @@
         </section>
         <section class="panel detail-panel">
           <header class="detail-header">
-            <button id="backBtn">← Projects</button>
+            <button id="backBtn">← Back</button>
             <h2 id="detail-title"></h2>
           </header>
-            <zero-md id="project-viewer"></zero-md>
+          <zero-md id="project-viewer">
+            <template data-append>
+<!--                 <link rel="stylesheet" media="(prefers-color-scheme:dark)" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github-dark.min.css" /> -->
+<!--             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11/styles/github.min.css" /> -->
+<!--                     <link rel="stylesheet" href="./assets/css/style.css" /> -->
+                    <style>
+                      h2 {
+                        color: white;
+                        background: yellow;
+                      }
+                    </style>
+            </template>
+          </zero-md>
         </section>
 
         </div>
@@ -405,7 +417,11 @@
         <header>
           <h2 class="h2 article-title">Publications</h2>
         </header>
-
+        <section class="about-text">
+          <p>
+           Test.
+          </p>
+        </section>
 
       </article>
 
