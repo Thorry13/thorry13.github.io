@@ -43,10 +43,15 @@ function applyState(state) {
     card.classList.add("selected");
 
     document.getElementById("detail-title").textContent =
-    card.querySelector(".project-title").textContent;
+      card.querySelector(".project-title").textContent;
+
+    // document.getElementById("project-viewer").scrollIntoView({"behavior":"smooth", "block":"start"});
+    // document.querySelector("detail-panel").scrollIntoView({"behavior":"smooth", "block":"start"});
+    document.getElementsByClassName("projects")[0].scrollIntoView({"behavior":"smooth", "block":"start"});
   } else {
     // close project
     viewport.classList.remove("detail-active");
+    document.getElementsByClassName("selected")[0].scrollIntoView({"behavior":"smooth", "block":"start"});
   }
 }
 
@@ -60,8 +65,6 @@ window.addEventListener("hashchange", () => {
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
 
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
@@ -97,19 +100,29 @@ function changeMdSrc(md){
   newViewer.id = "project-viewer";
 
   // manage zero-md styling
+  // newViewer.innerHTML = `
+  // <template data-append>
+    // <style>
+    // body {
+    //   color: inherit;
+    // }
+    // </style>
+  // </template>
+  // `
   newViewer.innerHTML = `
   <template data-append>
     <style>
-    body {
-      color: inherit;
-    }
+      body {
+        color: inherit;
+      }
     </style>
+    <link rel="stylesheet" href="localhost:8000/assets/css/style.css" />
   </template>
   `
 
   // update view
   oldViewer.replaceWith(newViewer);
-
+  // oldViewer.scrollIntoView();
 }
 
 // Back button
