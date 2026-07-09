@@ -51,7 +51,7 @@ function applyState(state) {
   } else {
     // close project
     viewport.classList.remove("detail-active");
-    document.getElementsByClassName("selected")[0].scrollIntoView({"behavior":"smooth", "block":"start"});
+    document.getElementsByClassName("selected")[0].scrollIntoView({"behavior":"smooth", "block":"end"});
   }
 }
 
@@ -100,23 +100,17 @@ function changeMdSrc(md){
   newViewer.id = "project-viewer";
 
   // manage zero-md styling
-  // newViewer.innerHTML = `
-  // <template data-append>
-    // <style>
-    // body {
-    //   color: inherit;
-    // }
-    // </style>
-  // </template>
-  // `
   newViewer.innerHTML = `
   <template data-append>
     <style>
       body {
         color: inherit;
       }
+      img {
+        max-width:100%;
+        height:auto;
+      }
     </style>
-    <link rel="stylesheet" href="localhost:8000/assets/css/style.css" />
   </template>
   `
 

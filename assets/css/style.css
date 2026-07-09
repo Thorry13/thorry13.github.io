@@ -80,8 +80,9 @@
   /* font-size */
   --fs-1: 24px;
   --fs-2: 18px;
-  --fs-3: 17px;max-width: calc(100% - 46px);
-  width: calc(100% - 46px);
+  --fs-3: 17px;
+/*   max-width: calc(100% - 46px); */
+/*   width: calc(100% - 46px); */
   --fs-4: 16px;
   --fs-5: 15px;
   --fs-6: 14px;
@@ -132,6 +133,11 @@ a { text-decoration: none; }
 li { list-style: none; }
 
 img, ion-icon, a, button, time, span { display: block; }
+
+img {
+  max-width:100%;
+  height:auto;
+}
 
 button {
   font: inherit;
@@ -227,6 +233,7 @@ article.active {
 .h5 {
   color: var(--white-2);
   text-transform: capitalize;
+  overflow-wrap: anywhere;
 }
 
 .h2 { font-size: var(--fs-1); }
@@ -314,7 +321,7 @@ main {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: max-content;
+/*   width: max-content; */
 }
 
 
@@ -326,6 +333,7 @@ main {
 .sidebar {
   margin-bottom: 15px;
   max-height: 112px;
+/*   max-height: none; */
   overflow: hidden;
   transition: var(--transition-2);
 }
@@ -339,6 +347,14 @@ main {
   align-items: center;
   gap: 15px;
 }
+/*
+.sidebar-info_more{
+  display: none;
+}*/
+
+/*.sidebar-active .sidebar-info_more{
+  display: block;
+}*/
 
 .avatar-box {
   background: var(--bg-gradient-onyx);
@@ -475,6 +491,7 @@ main {
   border-radius: 12px 12px 0 0;
   box-shadow: var(--shadow-2);
   z-index: 5;
+  padding-bottom:env(safe-area-inset-bottom);
 }
 
 .navbar-list {
@@ -488,7 +505,8 @@ main {
 .navbar-link {
   color: var(--light-gray);
   font-size: var(--fs-8);
-  padding: 20px 7px;
+  padding: 16px 14px;
+  min-height: 48px;
   transition: color var(--transition-1);
 }
 
@@ -663,7 +681,8 @@ main {
 
 .project-list {
   display: grid;
-  grid-template-columns: 1fr;
+/*   grid-template-columns: 1fr; */
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
   gap: 30px;
   margin-bottom: 10px;
 }
@@ -708,7 +727,8 @@ main {
 .project-img {
   position: relative;
   width: 100%;
-  height: 200px;
+  aspect-ratio:16/9;
+  height: auto;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 15px;
@@ -754,8 +774,8 @@ main {
 .project-card-icon-box ion-icon { --ionicon-stroke-width: 50px; }
 
 .project-img img {
-  width: 100%;
-  height: 100%;
+/*   width: 100%; */
+/*   height: 100%; */
   object-fit: cover;
   transition: var(--transition-1);
 }
@@ -822,6 +842,32 @@ main {
   color: var(--white-2);
 }
 
+/*-----------------------------------*\
+ # PUBLICATIONS
+ \*-----------------------------------*/
+
+/*#orcid {
+  display: block;
+  min-width: 800px;
+  height: 100px;
+}*/
+.publication {
+  margin-bottom: 15px;
+  padding: 10px;
+  /*border: none;
+   *   width: 100%;*/
+  border-left: 3px solid #0056b3;
+  background-color: #f9f9f9;
+  /*             display: block; */
+}
+.publication-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.publication-details {
+  color: #555;
+  font-size: 0.9em;
+}
 
 /*-----------------------------------*\
   #RESPONSIVE
@@ -886,7 +932,7 @@ main {
    */
 
   .sidebar, article {
-    width: 520px;
+    width: min(100%, 520px);
     margin-inline: auto;
     padding: 30px;
   }
@@ -998,7 +1044,7 @@ main {
    * REUSED STYLE
    */
 
-  .sidebar, article { width: 700px; }
+  .sidebar, article { width: min(100%, 700px); }
 
   .has-scrollbar::-webkit-scrollbar-button { width: 100px; }
 
@@ -1130,7 +1176,7 @@ main {
    * PROJECTS
    */
 
-  .project-list { grid-template-columns: repeat(3, 1fr); }
+/*   .project-list { grid-template-columns: repeat(3, 1fr); } */
 
 
 
