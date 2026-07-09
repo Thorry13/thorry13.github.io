@@ -1,8 +1,17 @@
 ## Context
-I joined [HMR Biophotonics Lab](https://biophotonics.ca/labo/) in January 2020 during my master's program to assist in developing algorithms to automatically evaluate eye's biomechanical properties. The lab had created a non-invasive method to assess ocular rigidity, that could be involved in various eye diseases including glaucoma. However, a fully autmated system still needed to perform a better choroid segmentation task on numerous Optical Coherence Tomography (OCT) images. 
+I joined [HMR Biophotonics Lab](https://biophotonics.ca/labo/) in January 2020 during my master's program to assist in developing algorithms to automatically evaluate eye's biomechanical properties. The lab had created a non-invasive method to assess ocular rigidity, that could be involved in various eye diseases including glaucoma. However, a fully autmated system still needed to perform a better choroid segmentation task on numerous Optical Coherence Tomography (OCT) images.
+
+<center>
+    <figure>
+        <img src="assets/images/projects/choroidal_segmentation/video_with_segm.gif" width="500">
+        <figcaption>Older choroid segmentation method between Bruch's membrane (yellow) and Choroid-Sclera interface (cyan). CSI was traced using Graph-Search approach.</figcaption>
+    </figure>
+</center>
 
 ## Description
 The previous approach relied on a traditional graph-search algorithm, while my solution used its results to train weakly-supervised deep learning models, which significantly improved segmentation performance. The best performing model was based on a U-Net architecture with a ResNet-34 as an encoder. It showed smoother results with a better captured choroid pulsation on videos. 
+
+<center><img src="assets/images/projects/choroidal_segmentation/segmentedVideo.gif" width="500"></center>
 
 ## Challenges
 While the Bruch's membrane is relatively easy to detect on B-Scans, the choroid layer is much darker and blurrier without a clear apparent interface with the sclera (CSI). Pre-processing to increase contrast or post-processing to smooth the segmentation sometimes helped to perform better results but were finally not retained in the last model.
@@ -10,6 +19,10 @@ While the Bruch's membrane is relatively easy to detect on B-Scans, the choroid 
 I proposed also data augmentation to train models on blurrier images with mitigated results.
 
 Choroid pulsation is captured over a sequence of B-Scans that need to be aligned thanks to a registration step.
+
+As no ground truth existed, I applied stable custom deformations to quantify my models performances.
+
+<center><img src="assets/images/projects/choroidal_segmentation/manual_deformation.gif" width="500"></center>
 
 Finally, as many models were trained with various parameters, it was important to set a training tracker. For that specific purpose, I deployed an mlflow server with a proper file structure.
 
